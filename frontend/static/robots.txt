@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /about
+Sitemap: https://gridflare.xyz/sitemap.xml

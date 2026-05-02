@@ -1,0 +1,9 @@
+motor
+igraph
+networkx
+quart
+aiohttp
+
+mongomock
+#git+https://github.com/gonzaloverussa/pytest-async-mongodb
+

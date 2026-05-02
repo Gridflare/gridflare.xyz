@@ -1,0 +1,11 @@
+quart>=0.18.1
+pymongo
+numpy
+networkx
+python-igraph
+motor
+unidecode
+grpcio
+grpcio-tools
+hypercorn==0.13.2
+requests

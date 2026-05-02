@@ -1,0 +1,7 @@
+data/*
+*cache*
+*.log
+*.json
+*.bak
+*.backup
+node.conf

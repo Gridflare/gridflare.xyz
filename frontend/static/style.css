@@ -1,0 +1,197 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+    font-size: 14pt;
+}
+
+
+:root {
+  --pane-bg-color: #06041A;
+  --body-color: #040007;
+  --title-text-color: #23D2E6;
+  --main-text-color: #94B2FF;
+  --highlight-color: #A868CB;
+  --shadow-color: #706CC2;
+  --edge-color: #94B2FF;
+  --link-color: #94B2FF;
+  --button-color: #70d2c9;
+}
+
+td, th {
+    color: var(--main-text-color);
+    padding: 1px 3px;
+    white-space: nowrap;
+}
+th {
+    color: var(--title-text-color);
+}
+
+h1, h2, h3 {
+    margin: 5px 2px;
+    padding: 5px 2px;
+    color: var(--title-text-color);
+}
+h1 {
+    font-size: 1.4em;
+}
+h2 {
+    font-size: 1.2em;
+}
+h3 {
+    font-size: 1.1em;
+}
+
+p, a {
+    padding: 4px 5px;
+    line-height: 1.3em;
+}
+
+body {
+    background-color: var(--body-color);
+}
+
+#main-content {
+    color: var(--main-text-color);
+    margin: 5px;
+    width: min-content;
+    margin:auto;
+}
+
+#header-bar {
+    padding: 5px;
+    margin: 0px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    background-color: var(--pane-bg-color);
+    text-align: center;
+    clear:both;
+    background:linear-gradient(180deg, var(--shadow-color) -80%, transparent);
+}
+#header-bar a {
+    font-size: 1.4em;
+}
+
+#header-bar a {
+    text-decoration: none;
+    padding: 12px;
+}
+
+#page-footer {
+    clear: both;
+    width: max-content;
+    margin: 1.4em auto;
+    color: var(--main-text-color);
+    text-align: center;
+}
+
+.pane {
+    margin: 18px 18px;
+    padding: 12px;
+    float: left;
+    background-color: var(--pane-bg-color);
+    border-left: var(--edge-color) 5px double;
+    border-top: var(--edge-color) 1px solid;
+    box-shadow: 1px 3px 10px 1px var(--shadow-color);
+    border-radius: 2px;
+    min-width: 12em;
+    max-width: 80vw;
+    overflow-x: hidden;
+}
+
+.clear {
+    clear: both;
+    width: min-content;
+}
+
+
+a:visited {
+    color: var(--highlight-color);
+
+}
+a:link {
+    color: var(--link-color);
+
+}
+
+#header-bar a:hover::before{
+    content:"⚡"
+}
+#header-bar a:hover::after{
+    content:"⚡"
+}
+
+
+.colourball {
+  display: inline-block;
+  background: black;
+  border-radius: 50%;
+  height: 15pt;
+  width: 15pt;
+  margin: -3pt 0pt;
+  background: radial-gradient(circle at 33% 33%, white, transparent 25%, #000);
+}
+
+button, input[type="submit"] {
+    padding: 8px;
+    margin: 12px 8px;
+    border: 0px;
+    background-color: var(--title-text-color);
+    color: var(--pane-bg-color);
+    box-shadow: 1px 1px 4px 1px var(--shadow-color);
+    border-radius: 3px;
+
+}
+button:hover, input[type="submit"]:hover {
+    background-color: var(--title-text-color);
+    box-shadow: 1px 1px 8px 7px var(--shadow-color);
+}
+button:active, input[type="submit"]:active {
+    background-color: var(--highlight-color);
+    box-shadow: 1px 1px 4px 4px var(--shadow-color);
+}
+input[type="text"] {
+    margin: 2px;
+    padding: 8px;
+    border: 1px solid var(--main-text-color);
+    border-radius: 3px;
+    background-color: var(--body-color);
+    color: var(--shadow-color);
+}
+input[type="text"]:focus {
+    border-color: var(--shadow-color);
+    outline: solid 2px var(--shadow-color);
+}
+
+/* Atoms */
+
+.w100 {
+    width: 100%;
+}
+.w95 {
+    width: 95%;
+}
+.w50 {
+    width: 50%;
+}
+
+.mw20em {
+    min-width: min(20em, 80vw);
+}
+.mw40em {
+    min-width: min(43em, 80vw);
+}
+
+.tar {
+    text-align: right;
+}
+.tac {
+    text-align: center;
+}
+.smalltext {
+    font-size: 0.9em;
+}
+
+.xoverflow {
+    overflow-x: auto;
+}

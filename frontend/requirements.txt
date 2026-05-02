@@ -1,0 +1,5 @@
+quart>=0.18.1
+pymongo
+motor
+aiohttp
+hypercorn==0.13.2

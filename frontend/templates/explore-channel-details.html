@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class='pane clear'>
+    <h3>Channel {{ channeldata['channel_id'] }}</h3>
+    <p>Node 1: <a href='/explore/node/{{channeldata["node1_pub"]}}'
+                 > {{channeldata['node1_alias']}}</a></p>
+    <p>Node 2: <a href='/explore/node/{{channeldata["node2_pub"]}}'
+                 > {{channeldata['node2_alias']}}</a></p>
+    <p>Capacity: {{ channeldata['capacity'] | fmtsats }}</p>
+    <p>Last Update: {{ channeldata['last_update'] | dtime}} ago</p>
+    <p>Channel Point: {{ channeldata['chan_point'] }}</p>
+
+</div>
+
+{% endblock %}
+

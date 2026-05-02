@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    {% for n in nodes %}
+    <url>
+        <loc>https://gridflare.xyz/explore/node/{{n["pub_key"]}}</loc>
+        <changefreq>monthly</changefreq>
+    </url>
+    {% endfor %}
+</urlset>

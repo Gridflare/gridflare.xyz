@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class='pane mw40em'>
+        <h1>About</h1>
+        <p>
+        Gridflare.xyz was a lightning network explorer and channel recommendation engine launched in 2023 and archived in 2026.
+        </p>
+        <p>I can be contacted @gridflare on Twitter and Telegram</p>
+        <p>
+            My node management scripts are available here:
+            <a href='https://github.com/Gridflare/lndpytools'>
+                LND Py Tools
+            </a>
+        </p>
+        <br>
+        <p>
+            You can connect to my routing node at the following addresses:
+        </p>
+        <form>
+          <label for="clearnet">Clearnet</label>
+          <input type="text" id="clearnet" name="clearnet" readonly class='w95'
+            value="02e2bf9e87c7ba0ea046882d9b3301ca9a3b049aa920dccbd836c4008eac32d4e5@0.0.0.0:9735">
+          <br><br>
+          <label for="tor">Tor:</label>
+          <input type="text" id="tor" name="tor" readonly class='w95'
+            value="02e2bf9e87c7ba0ea046882d9b3301ca9a3b049aa920dccbd836c4008eac32d4e5@kjedukyse2pxbjiggvaitdp2iruum7zsvhdwesxzabthqu4d4d5l3lid.onion:9735">
+        </form>
+        <br>
+        <p>
+            I suggest not opening a channel, I have enough connectivity at the moment.
+        </p>
+
+
+    </div>
+
+{% endblock %}

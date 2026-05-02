@@ -1,0 +1,24 @@
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "7080:5000"
+    environment:
+      - PRODENV=1
+    volumes:
+      - .:/code
+  processor:
+    build:
+      context: ./processor
+      dockerfile: Dockerfile
+    environment:
+      - PRODENV=1
+    volumes:
+      - .:/code
+  mongo:
+    image: mongo
+    volumes:
+      - ./data/mongodb:/data/db
+    command: mongod --quiet --logpath /tmp/mongo.log

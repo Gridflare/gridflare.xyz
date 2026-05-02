@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}{{nodeinfo['alias']}} - Gridflare Lightning Explorer{% endblock %}
+
+{% block content %}
+{% for c in channels %}
+<div class='pane xoverflow mw40em clear'>
+    <h3><a href="/explore/channel/{{ c['channel_id'] }}">
+        {{ c['channel_id'] }}</a> {{c['node1_alias']}} ⟺ {{c['node2_alias']}}</h3>
+    <p>Capacity: {{ c['capacity'] | fmtsats }}</p>
+    <p>Last Update: {{ c['last_update'] | dtime }} ago</p>
+    <p>Channel Point: {{ c['chan_point'] }}</p>
+
+
+</div>
+{% endfor %}
+
+
+
+{% endblock %}

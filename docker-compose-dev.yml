@@ -1,0 +1,33 @@
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "7080:5000"
+    environment:
+      - QUART_ENV=development
+      - QUART_APP=frontend/ln-explore-webserver:app
+    volumes:
+      - .:/code
+    command: quart run --host 0.0.0.0 --port 5000
+  processor:
+    build:
+      context: ./processor
+      dockerfile: Dockerfile
+    ports:
+      - "7082:5000"
+    environment:
+      - QUART_ENV=production
+      - PYTHONPATH=/code
+      - QUART_APP=processor/processor-webserver:app
+    volumes:
+      - .:/code
+    command: quart run --host 0.0.0.0 --port 5000
+  mongo:
+    image: mongo
+    ports:
+       - "27017:27017"
+    volumes:
+      - ./data/mongodb:/data/db
+    command: mongod --quiet --logpath /tmp/mongo.log

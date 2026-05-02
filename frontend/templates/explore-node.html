@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% block title %}{{nodeinfo['alias']}} - Gridflare Lightning Explorer{% endblock %}
+
+{% block moremeta %}{% if channel_suggestions.get('status') == 'pending'
+    %}<meta http-equiv="refresh" content="10">
+{% endif %}{% endblock %}
+
+{% block content %}
+<div class='pane clear'>
+    <h2 id='nodealias'>Alias: {{nodeinfo['alias']}}</h2>
+    <div id='nodepub'>Public&nbsp;key:&nbsp;{{nodeinfo['pub_key']}}</div>
+    <div id='nodecolour'>
+        Colour: {{nodeinfo["color"]}}
+        <figure class='colourball'
+            style='background-color:{{nodeinfo["color"]}};'>
+        </figure>
+    </div>
+    <div id='nodecap'>Capacity: {{nodeinfo.get("capacity",-1) | fmtsats}}</div>
+    <div id='nodechancount'>Channel Count: {{nodeinfo["num_channels"]}}</div>
+    <div id='lastnodeupdate'>Last Node Update: {{nodeinfo["last_update"] | dtime}} ago</div>
+    <div id='lastchanupdate'>Last Channel Update: {{nodeinfo.get("last_channel_update", -1) | dtime}} ago</div>
+    {% if False %}
+    <!-- No longer interested in giving away free SEO-->
+    <div id='links'>Links:
+        <a href='https://1ml.com/node/{{nodeinfo["pub_key"]}}'>1ML</a
+        >/<a href='https://amboss.space/node/{{nodeinfo["pub_key"]}}'
+        >Amboss</a>
+    </div>
+    {% endif %}
+</div>
+<div class='pane clear mw20em'>
+    <h2>Channel Suggestions</h2>
+    {% if channel_suggestions.get('status') == 'available' %}
+
+    <p>Gridflare's analysis suggests that opening a channel to one of the
+    following nodes will have a positive effect on your centrality</p>
+
+    <table>
+        <tr>
+            <th>Alias</th>
+            <th>Pub Key</th>
+            <th>Capacity</th>
+            <th>Chans</th>
+            <th>Links</th>
+        </tr>
+        {% for n in channel_suggestions['suggestions'] %}
+        <tr>
+            <td>{{n['alias']}}</td>
+            <td><a href='/explore/node/{{n["pub_key"]}}'>
+                {{n['pub_key'][:26]}}...</a></td>
+            <td class='tar'>{{n.get('capacity',-1)//1e6 | int}} Msat</td>
+            <td class='tar'>{{n.get('num_channels',-1)}}</td>
+            <td><a href='https://amboss.space/node/{{n["pub_key"]}}'>
+                    Amboss</a
+                    >/<a href='https://1ml.com/node/{{n["pub_key"]}}'
+                    >1ML</a>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+    <p class='smalltext tac'>The above selection will update daily</p>
+
+        {% if False %}
+        <!-- This is for debug purposes -->
+        <form action='/report/suggestchannelspreview/'>
+            <input type='hidden' value='{{nodeinfo["pub_key"]}}' name='pub_key'>
+            <input type='submit' value='Request Channel Suggestions'>
+        </form>
+        {% endif %}
+
+    {% elif channel_suggestions.get('status') == 'error' %}
+    <p>Sorry, an unexpected error has occurred</p>
+
+    {% elif channel_suggestions.get('status') == 'pending' %}
+    <p>Channel suggestions are currently being processed</p>
+    <p></p>
+
+    {% elif qualify4suggestions %}
+    <p>If you are the owner of this node, channel suggestions are available</p>
+    <form action='/report/suggestchannelspreview/'>
+        <input type='hidden' value='{{nodeinfo["pub_key"]}}' name='pub_key'>
+        <input type='submit' value='Request Channel Suggestions'>
+    </form>
+
+    {% else %}
+    <p>
+        Node does not meet minimum requirements for channel suggestions.
+        (3+ channels of 500+ ksat.)
+    </p>
+
+
+    {% endif %}
+</div>
+{% if False %}
+<!-- Not required right now -->
+<div class='pane clear mw50'>
+    <h2>Node Reports</h2>
+    <p>There are currently no reports available for this node.</p>
+</div>
+{% endif %}
+{% endblock %}

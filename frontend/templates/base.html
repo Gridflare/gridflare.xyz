@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>{% block title %}Gridflare Lightning Explorer{% endblock %}</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    {% block moremeta %}{% endblock %}
+</head>
+
+<body>
+<p style='background-color:red;text-align: center;'>
+    This is experimental software</p>
+<div id='header-bar'><h1>
+ <a href='/explore'>Explore</a>
+
+</h1></div>
+<div id='main-content'>
+    {% block content %}
+    {% endblock %}
+</div>
+<div id='page-footer'>
+    <br>
+    <p class='smalltext'>
+        Gridflare Lightning Network Explorer
+        <br>
+        © 2021 - {{ now.year }}
+    </p>
+    <a  class='smalltext' href='/about'>About</a>
+</div>
+</body>
+
+</html>
